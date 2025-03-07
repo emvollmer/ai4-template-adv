@@ -23,12 +23,13 @@ PACKAGE_METADATA = metadata.metadata(API_NAME)  # .json
 
 # Get ai4-metadata.yaml metadata
 CWD = os.getcwd()
+REPO_NAME = "{{ cookiecutter.__repo_name }}"
 AI4_METADATA_DIR = os.getenv(f"{API_NAME.capitalize()}_AI4_METADATA_DIR")
 if AI4_METADATA_DIR is None:
-    if "ai4-metadata.yml" in os.listdir(f"{CWD}/{API_NAME}"):
-        AI4_METADATA_DIR = f"{CWD}/{API_NAME}"
-    elif "ai4-metadata.yml" in os.listdir(f"{CWD}/../{API_NAME}"):
-        AI4_METADATA_DIR = f"{CWD}/../{API_NAME}"
+    if "ai4-metadata.yml" in os.listdir(f"{CWD}/{REPO_NAME}"):
+        AI4_METADATA_DIR = f"{CWD}/{REPO_NAME}"
+    elif "ai4-metadata.yml" in os.listdir(f"{CWD}/../{REPO_NAME}"):
+        AI4_METADATA_DIR = f"{CWD}/../{REPO_NAME}"
 
 # Open ai4-metadata.yml
 _file = f"{AI4_METADATA_DIR}/ai4-metadata.yml"
